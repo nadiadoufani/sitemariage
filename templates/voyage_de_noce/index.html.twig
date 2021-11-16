@@ -1,0 +1,152 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello VoyageDeNoceController!{% endblock %}
+
+{% block body %}
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.voyage {
+  margin: auto;
+  padding: 2em;
+  max-width: 68rem;
+}
+
+.flex {
+  display: flex;
+  gap: 2em;
+  justify-content: center;
+  flex-flow: row wrap;
+}
+
+.flex > * {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  min-width: 15rem;
+  max-width: calc(12.5rem + 13vw);
+  background: #fff;
+  border-radius: 0.75em;
+  overflow: hidden;
+  box-shadow: 0 0.25em 0.6em #0005, 0 0.65em 1em #0004;
+  transition: transform 270ms ease;
+  position: relative;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  display: flex;
+  inset: 0;
+  isolation: isolate;
+  mix-blend-mode: color;
+  background: linear-gradient(180deg, #0000 48%, 48%, red, 70%, blue);
+  opacity: 0;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+.card:hover {
+  transform: scale(1.05);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  height: auto;
+  margin-bottom: 1em;
+}
+
+.card-body {
+  height: 200px;
+  padding: 1em 0;
+}
+
+h3 {
+  text-align: center;
+  color:hotpink;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.para {
+  color: #0009;
+  font-style: italic;
+  font-weight: 700;
+  text-align: center;
+  margin: 1em auto;
+  padding-inline: 0.5em;
+  max-width: 35ch;
+}
+
+</style>
+<div  style="margin-top:30px">
+<h3>Voyages de noces</h3>
+<p style="text-align: center;"> Ou partir en voyage de noces ? Vous avez des idées mais vous ne savez pas laquelle choisir ?
+<br> Trouvez le pays ou la ville qui vous correspond le mieux à travers notre liste d’idées de 
+<br>voyages de noces. Parmi les offres de voyages all inclusive que vous pouvez trouver,
+<br> nous vous avons répertorié des destinations idéales pour passer un moment à deux.
+Votre lune de miel doit être<br> inoubliable, pour cela choisissez celle qui vous fait le plus rêver parmi nos destinations..</p>
+</div>
+<div class="voyage">
+  <div class="flex">
+  {% for item in voyagedenoce %}
+    <div class="card">
+      <img src="/imgvoyages/{{ item.image }}" alt="">
+      <div class="card-body">
+        <h3>{{ item.nom}}</h3>
+        <p class="para" >{{ item.description}}
+        </p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<div class="d-flex justify-content-end" > 
+ <div style="margin-top: 30px;margin-left: 10px;">
+   <h3>lune de miel</h3>
+<p >Les agences Fox Travel vous aide à organiser votre lune de miel en amoureux.
+<br> Après le stress des préparatifs et l’excitation du jour J, vous n'aurez qu'une envie,
+<br> vous détendre avec votre moitié, et pourquoi pas changer d'air ! Embarquez pour
+<br> le pays de vos rêves, en Europe ou au bout du monde avec l'aide de les agences.
+<br> Son équipe mettra son savoir-faire et son expérience à votre service.
+</p>
+<h3>Services Proposés</h3>
+<p>
+les agences vous proposent plusieurs destinations, en fonction de votre profil,
+<br> de vos goûts et de votre budget. Ensemble vous trouverez celle qui correspond à vos attentes,
+<br> que vous soyez baroudeurs ou amateurs de farniente.
+
+<br>Vous êtes plutôt grande ville, plage, montagne ou randonnées en pleine nature ? Tout est possible !
+<br> N'hésitez pas à contacter votre prestataire dès maintenant pour obtenir davantage d'informations sur ses prestations.
+</p>
+
+ 
+</div> 
+<div ><img src="https://cdn0.mariages.net/vendor/6393/3_2/640/jpg/hilltop-villa5_3_196393-157139958550277.webp" alt="" style="margin-top: 50px;" ><br>
+</div>
+</div>
+<div  style="margin-top:30px">
+<h3>Destination de lune de miel</h3>
+<p style="text-align: center;">
+ Le voyage de noces est le voyage en amoureux par excellence. Jeunes mariés,
+ <br> prolongez le bonheur de votre union en choisissant la lune de miel qui 
+ <br>vous convient en passant de la réalité au rêve : vous rêvez de 15 jours sur
+ <br> une île paradisiaque avec plage de sable blanc ou de sillonner les Etats-Unis sur
+ <br> la célèbre route 66 ? Découvrez les conseils de Mariée.fr et les destinations de rêve
+ <br> de nos prestataires pour faire de votre lune de miel, une parenthèse d’émerveillement.</p>
+</div>
+
+
+{% endblock %}
